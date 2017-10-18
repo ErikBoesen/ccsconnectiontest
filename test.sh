@@ -23,14 +23,14 @@ function log(){
             printf "${PRE}$1... "
             ;;
         *)
-            echo -e "${PRE}${BCYAN}LOG${NC}: $1"
+            echo -e "${PRE}${BCYAN}$1${NC}"
             ;;
     esac
 }
 
 function up() {
     log "Contacting $2 ($1)..." "task"
-    timeout 1 curl -s "$1" >/dev/null
+    timeout 2 curl -s "$1" >/dev/null
 
     if [ $? = 0 ]; then
         log "Reached $2 successfully." "success"
@@ -49,11 +49,11 @@ up canonical.com "Canonical"
 
 free=$(df -BG / | tail -1 | awk '{print $4}' | sed 's/G$//')
 required=30
-log "Checking if host has 30G free" "task"
+log "Checking if host has >30G free" "task"
 if [ $free -gt $required ]; then
-    log "it does." "success"
+    log "it does (${free}G)." "success"
 else
-    log "it does not." "error"
+    log "it does not (${free}G)." "error"
 fi
 
 log "Checking for 64 Bit OS" "task"
@@ -65,7 +65,14 @@ fi
 
 
 # Test CCS servers
-servers=($(< uri_1.txt) $(< uri_2.txt) $(< uri_3.txt))
+servers=()
+for i in uri_*.txt; do
+    servers+=($(< $i))
+done
+
+if [ ${#servers[@]} = 0 ]; then
+    log "Warning: no URI files detected. No CCS servers will be tested."
+fi
 
 for i in ${servers[@]}; do
     ip=$(echo $i | egrep -o "([0-9]{1,3}[.]){3}[0-9]{1,3}")
