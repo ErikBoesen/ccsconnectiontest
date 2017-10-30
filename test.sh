@@ -8,22 +8,26 @@ export NC="\033[0m"
 
 export PRE="[${CYAN}CT${NC}] "
 
+if [ $(uname) = "Darwin" ]; then
+    function timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
+fi
+
 function log(){
     case $2 in
         "warning")
-            echo -e "${YELLOW}$1${NC}"
+            printf "${YELLOW}$1${NC}\n"
             ;;
         "error")
-            echo -e "${RED}$1${NC}"
+            printf "${RED}$1${NC}\n"
             ;;
         "success")
-            echo -e "${GREEN}$1${NC}"
+            printf "${GREEN}$1${NC}\n"
             ;;
         "task")
             printf "${PRE}$1... "
             ;;
         *)
-            echo -e "${PRE}$1${NC}"
+            printf "${PRE}$1${NC}\n"
             ;;
     esac
 }
@@ -47,7 +51,11 @@ up canonical.com "Canonical"
 
 # TODO: Test host time
 
-free=$(df -BG / | tail -1 | awk '{print $4}' | sed "s/G$//")
+if [ $(uname) = "Darwin" ]; then
+    free=$(df -g / | tail -1 | awk '{print $3}')
+else
+    free=$(df -BG / | tail -1 | awk '{print $4}' | sed "s/G$//")
+fi
 required=30
 log "Checking if host has >${required}G free" "task"
 if [ $free -gt $required ]; then
