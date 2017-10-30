@@ -1,10 +1,12 @@
 <img align="right" alt="CyberPatriot logo" width="200" src="https://www.beavercreek.k12.oh.us/cms/lib/OH01000456/Centricity/Domain/1363/CyberPatriot-logo.png">
 
-# CCS Connection Test for GNU/Linux
+# CCS Connection Test for GNU/Linux & macOS
 
-Linux version of the CyberPatriot connection test.
+A version of the CyberPatriot connection test for GNU/Linux, macOS, and other UNIX-based hosts.
 
-This script will run the same tests as the official CyberPatriot CCS Connection Test, and is compatible with GNU/Linux systems, for which there's no official test application. Furthermore, it's CLI based rather than GUI, because real *GNU SLASH* Linux users don't need GUIs.
+This script will run the same tests as the official CyberPatriot CCS Connection Test, but on the aforementioned systems, for which there are no official test applications.
+
+This version of the connection test runs in the command line rather than a GUI, for the sake of simplicity.
 
 ## Running
 Like any other shell script:
@@ -15,6 +17,6 @@ Like any other shell script:
 ## Licensing/Authorship
 This software was created and is maintained by [Erik Boesen](https://github.com/ErikBoesen), who does not have any connection to CyberPatriot or the AFA.
 
-This software was independently created to be of assistance to CyberPatriot competitors using GNU/Linux host systems, and does not intend to infringe on any copyrights or regulations.
+This software was independently created to be of assistance to CyberPatriot competitors using UNIX-based host systems, and does not intend to infringe on any copyrights or regulations.
 
 This software is provided under the [MIT License](LICENSE).
