@@ -1,5 +1,10 @@
 #!/bin/bash
 
+##########################
+# Written by Erik Boesen #
+# github.com/ErikBoesen  #
+##########################
+
 export CYAN="\e[36m"
 export RED="\e[31m"
 export GREEN="\e[32m"
