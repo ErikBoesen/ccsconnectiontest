@@ -1,4 +1,4 @@
-<img align="right" alt="CyberPatriot logo" width="200" src="https://www.beavercreek.k12.oh.us/cms/lib/OH01000456/Centricity/Domain/1363/CyberPatriot-logo.png">
+<img align="right" alt="CyberPatriot logo" width="200" src="https://www.lths.net/cms/lib/IL01904810/Centricity/Domain/1125/CyberPatriot-logo.png">
 
 # CCS Connection Test for GNU/Linux & macOS
 
